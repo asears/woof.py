@@ -11,11 +11,13 @@ A subset of the project 50,000 Meows, because dogs are the #1 interest on Twitte
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/asears/woof.py/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/asears/woof.py/?branch=master)
 [![Code Health](https://landscape.io/github/asears/woof.py/master/landscape.svg)](https://landscape.io/github/asears/woof.py/master)
 
-An entry for [NaNoGenMo 2014](https://github.com/dariusk/NaNoGenMo-2014/):
+
 
 See also
 --------
 
+hugovk/meow.py
+An entry for [NaNoGenMo 2014](https://github.com/dariusk/NaNoGenMo-2014/):
 * [50,000 Meows *rewritten in go*](https://github.com/hungnq1989/meowify)
 
 
