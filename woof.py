@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 """
-Replace all words with meows, preserving punctuation.
+Replace all words with woofs, preserving punctuation.
 
-For NaNoGenMo 2014.
+Because Twitter loves Dogs.
+
+Based on woof.py from @dariusk NaNoGenMo 2014.
 https://github.com/dariusk/NaNoGenMo-2014/
 """
 
@@ -17,47 +19,47 @@ def is_word(thing):
     return found
 
 
-def meow_meow(line, converter_fun):
-    """Meowify a line"""
-    meowed = []
+def woof_woof(line, converter_fun):
+    """Woofify a line"""
+    woofed = []
     # Break line into words and non-words (e.g. punctuation and space)
     things = re.findall(r"\w+|[^\w]", line, re.UNICODE)
     for thing in things:
         if is_word(thing):
-            meowed.append(converter_fun(thing))
+            woofed.append(converter_fun(thing))
         else:
-            meowed.append(thing)
-    return "".join(meowed)
+            woofed.append(thing)
+    return "".join(woofed)
 
 
-def meow(word):
-    """Meowify a word"""
-    meowed = ""
+def woof(word):
+    """Woofify a word"""
+    woofed = ""
     length = len(word)
 
     if length == 1:
-        return capify("m", word)
+        return capify("w", word)
     elif length == 2:
-        return capify("me", word)
+        return capify("wo", word)
     elif length == 3:
-        return capify("mew", word)
+        return capify("woo", word)
     elif length == 4:
-        return capify("meow", word)
+        return capify("woof", word)
 
     # Words longer than four will have:
-    #  * first letter M
-    #  * last letter W
+    #  * first letter W
+    #  * last letter F
     #  * middle with a random number of Es, then some Os
 
     # Number of EOs:
-    eeohs = length - len("m") - len("w")
+    eeohs = length - len("w") - len("f")
     # Number of Es:
     ees = random.randrange(1, eeohs)
     # Number of Os:
     ohs = eeohs - ees
 
-    meowed = "m" + ("e" * ees) + ("o" * ohs) + "w"
-    return capify(meowed, word)
+    woofed = "w" + ("o" * ees) + ("o" * ohs) + "f"
+    return capify(woofed, word)
 
 
 def capify(word, reference):
@@ -81,7 +83,7 @@ def capify(word, reference):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description="Replace all words with meows, preserving punctuation.")
+        description="Replace all words with woofs, preserving punctuation.")
     parser.add_argument('infile', nargs='?', type=argparse.FileType('r'),
                         default=sys.stdin, help="Input text")
     parser.add_argument('-t', '--translation', action="store_true",
@@ -90,10 +92,11 @@ if __name__ == '__main__':
 
 #     for line in fileinput.input(openhook=fileinput.hook_encoded("utf-8")):
     for line in args.infile:
-        line = line.decode("utf-8-sig").rstrip()  # No BOM
+        #line = line.decode("utf-8-sig").rstrip()  # No BOM
         if args.translation:
             print()
-            print(line.encode("utf-8"))
-        print(meow_meow(line, meow).encode("utf-8"))
+            #print(line.encode("utf-8"))
+        #print(woof_woof(line, woof).encode("utf-8"))
+        print(woof_woof(line, woof))
 
 # End of file
